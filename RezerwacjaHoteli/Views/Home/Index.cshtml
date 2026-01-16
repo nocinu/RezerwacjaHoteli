@@ -1,8 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Hotel>
+
+@{
+    ViewData["Title"] = "System Rezerwacji Hoteli";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron bg-primary text-white p-5 rounded-lg m-0">
+            <h1 class="display-4">Witaj w Systemie Rezerwacji Hoteli!</h1>
+            <p class="lead">Zarezerwuj Twój idealny pobyt w jednym z naszych wspaniałych hoteli.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h2>Dostępne Hotele</h2>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var hotel in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@hotel.Name</h5>
+                    <p class="card-text">
+                        <strong>Ocena:</strong>
+                        @for (int i = 0; i < hotel.StarRating; i++)
+                        {
+                            <span>⭐</span>
+                        }
+                    </p>
+                    <p class="card-text"><strong>Miasto:</strong> @hotel.City</p>
+                    <p class="card-text"><strong>Adres:</strong> @hotel.Address</p>
+                    <p class="card-text">@hotel.Description</p>
+                    <p class="card-text"><small class="text-muted">Email: @hotel.ContactEmail</small></p>
+                </div>
+                <div class="card-footer">
+                    <a href="/Hotels/Details/@hotel.Id" class="btn btn-primary">Zobacz szczegóły</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

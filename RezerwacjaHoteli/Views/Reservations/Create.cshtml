@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Nowa rezerwacja";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Rezerwuj pokój</h2>
+        <hr />
+
+        <form method="post">
+            <div class="form-group mb-3">
+                <label for="RoomId" class="form-label">Pokój</label>
+                <select class="form-control" id="RoomId" name="RoomId" required>
+                    <option value="">-- Wybierz pokój --</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="CheckInDate" class="form-label">Data zaznaczenia</label>
+                <input type="date" class="form-control" id="CheckInDate" name="CheckInDate" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="CheckOutDate" class="form-label">Data wyjazdu</label>
+                <input type="date" class="form-control" id="CheckOutDate" name="CheckOutDate" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="NumberOfGuests" class="form-label">Liczba gości</label>
+                <input type="number" class="form-control" id="NumberOfGuests" name="NumberOfGuests"
+                       min="1" max="10" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="SpecialRequests" class="form-label">Specjalne życzenia (opcjonalnie)</label>
+                <textarea class="form-control" id="SpecialRequests" name="SpecialRequests" rows="4"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-success">Zarezerwuj</button>
+                <a href="/" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
