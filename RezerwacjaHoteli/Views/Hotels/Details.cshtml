@@ -1,0 +1,69 @@
+﻿@model Hotel
+
+@{
+    ViewData["Title"] = "Szczegóły Hotelu";
+    var roomCount = Model.Rooms?.Count() ?? 0;
+}
+
+
+
+
+<div class="container mt-5">
+    <h2>@Model.Name</h2>
+    <hr />
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <p><strong>Adres:</strong> @Model.Address</p>
+            <p><strong>Miasto:</strong> @Model.City</p>
+            <p>
+                <strong>Ocena:</strong>
+                @for (int i = 0; i < Model.StarRating; i++)
+                {
+                    <span>⭐</span>
+                }
+            </p>
+            <p><strong>Opis:</strong> @Model.Description</p>
+            <p><strong>Email:</strong> @Model.ContactEmail</p>
+        </div>
+    </div>
+
+    <h3>Dostępne pokoje</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numer</th>
+                <th>Typ</th>
+                <th>Cena/noc</th>
+                <th>Max gości</th>
+                <th>Status</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in Model.Rooms)
+            {
+                <tr>
+                    <td>@room.RoomNumber</td>
+                    <td>@room.RoomType</td>
+                    <td>@room.PricePerNight zł</td>
+                    <td>@room.MaxGuests</td>
+                    <td>@(room.Status == "Available" ? "Dostępny" : room.Status)</td>
+                    <td>
+                        @if (room.Status == "Available")
+                        {
+                            <a href="@Url.Action("Create", "Reservations", new { roomId = room.Id })"
+                               class="btn btn-primary">
+                                Rezerwuj
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="mt-4">
+        <a href="/Hotels/Index" class="btn btn-secondary">Powrót</a>
+    </div>
+</div>

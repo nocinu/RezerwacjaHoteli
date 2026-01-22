@@ -1,0 +1,58 @@
+﻿@model Hotel
+
+@{
+    ViewData["Title"] = "Dodaj Hotel";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Dodaj nowy hotel</h2>
+            <hr />
+
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label for="Name" class="form-label">Nazwa hotelu</label>
+                    <input type="text" class="form-control" id="Name" name="Name" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Address" class="form-label">Adres</label>
+                    <input type="text" class="form-control" id="Address" name="Address" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="City" class="form-label">Miasto</label>
+                    <input type="text" class="form-control" id="City" name="City" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="StarRating" class="form-label">Ocena (1-5)</label>
+                    <select class="form-control" id="StarRating" name="StarRating" required>
+                        <option value="">Wybierz ocenę</option>
+                        <option value="1">1 ⭐</option>
+                        <option value="2">2 ⭐⭐</option>
+                        <option value="3">3 ⭐⭐⭐</option>
+                        <option value="4">4 ⭐⭐⭐⭐</option>
+                        <option value="5">5 ⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Description" class="form-label">Opis</label>
+                    <textarea class="form-control" id="Description" name="Description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="ContactEmail" class="form-label">Email kontaktowy</label>
+                    <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-primary">Dodaj hotel</button>
+                    <a href="/Hotels/Index" class="btn btn-secondary">Anuluj</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

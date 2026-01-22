@@ -1,0 +1,42 @@
+﻿@model Hotel
+
+@{
+    ViewData["Title"] = "Usuń Hotel";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">⚠️ Potwierdzenie usunięcia</h4>
+                <p>Czy na pewno chcesz usunąć ten hotel?</p>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p><strong>Adres:</strong> @Model.Address</p>
+                    <p><strong>Miasto:</strong> @Model.City</p>
+                    <p>
+                        <strong>Ocena:</strong>
+                        @for (int i = 0; i < Model.StarRating; i++)
+                        {
+                            <span>⭐</span>
+                        }
+                    </p>
+                    <p><strong>Email:</strong> @Model.ContactEmail</p>
+                    <p><strong>Opis:</strong> @Model.Description</p>
+                </div>
+            </div>
+
+            <hr />
+
+            <form method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-lg">
+                    ✓ Usuń hotel
+                </button>
+            </form>
+            <a href="/Hotels/Index" class="btn btn-secondary btn-lg">Anuluj</a>
+        </div>
+    </div>
+</div>

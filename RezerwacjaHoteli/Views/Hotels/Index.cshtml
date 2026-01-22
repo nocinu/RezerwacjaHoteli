@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Hotel>
+
+@{
+    ViewData["Title"] = "Hotele";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2>Hotele</h2>
+        </div>
+        <div class="col-md-4 text-end">
+            @{
+                var userRole = Context.Session.GetString("UserRole");
+            }
+            @if (userRole == "Admin")
+            {
+                <a href="/Hotels/Create" class="btn btn-primary">Dodaj Hotel</a>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var hotel in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@hotel.Name</h5>
+                        <p class="card-text">
+                            <strong>Ocena:</strong>
+                            @for (int i = 0; i < hotel.StarRating; i++)
+                            {
+                                <span>⭐</span>
+                            }
+                        </p>
+                        <p class="card-text"><strong>Miasto:</strong> @hotel.City</p>
+                        <p class="card-text"><strong>Adres:</strong> @hotel.Address</p>
+                        <p class="card-text">@hotel.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/Hotels/Details/@hotel.Id" class="btn btn-primary btn-sm">Szczegóły</a>
+                        @if (userRole == "Admin")
+                        {
+                            <a href="/Hotels/Edit/@hotel.Id" class="btn btn-warning btn-sm">Edytuj</a>
+                            <a href="/Hotels/Delete/@hotel.Id" class="btn btn-danger btn-sm">Usuń</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

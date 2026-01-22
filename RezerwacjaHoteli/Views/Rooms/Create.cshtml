@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Dodaj Pokój";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Dodaj nowy pokój</h2>
+            <hr />
+
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label for="HotelId" class="form-label">Hotel</label>
+                    <select class="form-control" id="HotelId" name="HotelId" required>
+                        <option value="">-- Wybierz hotel --</option>
+                        @foreach (var hotel in ViewBag.Hotels)
+                        {
+                            <option value="@hotel.Id">@hotel.Name (@hotel.City)</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="RoomNumber" class="form-label">Numer pokoju</label>
+                    <input type="text" class="form-control" id="RoomNumber" name="RoomNumber" placeholder="np. 101, 102" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="RoomType" class="form-label">Typ pokoju</label>
+                    <select class="form-control" id="RoomType" name="RoomType" required>
+                        <option value="">-- Wybierz typ --</option>
+                        <option value="Single">Single (1 łóżko)</option>
+                        <option value="Double">Double (2 łóżka)</option>
+                        <option value="Suite">Suite (apartament)</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="PricePerNight" class="form-label">Cena za noc (PLN)</label>
+                    <input type="number" class="form-control" id="PricePerNight" name="PricePerNight"
+                           step="0.01" min="0.01" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="MaxGuests" class="form-label">Max liczba gości</label>
+                    <input type="number" class="form-control" id="MaxGuests" name="MaxGuests"
+                           min="1" max="10" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Description" class="form-label">Opis pokoju (opcjonalnie)</label>
+                    <textarea class="form-control" id="Description" name="Description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-primary">Dodaj pokój</button>
+                    <a href="/Hotels/Index" class="btn btn-secondary">Anuluj</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model Room
+@{
+    ViewData["Title"] = "Edytuj Pokój";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Edytuj pokój</h2>
+            <hr />
+
+            <form method="post">
+                <input type="hidden" name="Id" value="@Model.Id" />
+
+                <div class="form-group mb-3">
+                    <label for="HotelId" class="form-label">Hotel</label>
+                    <select class="form-control" id="HotelId" name="HotelId" required>
+                        @foreach (var hotel in ViewBag.Hotels)
+                        {
+                            <option value="@hotel.Id" selected="@(Model.HotelId == hotel.Id)">@hotel.Name (@hotel.City)</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="RoomNumber" class="form-label">Numer pokoju</label>
+                    <input type="text" class="form-control" id="RoomNumber" name="RoomNumber" value="@Model.RoomNumber" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="RoomType" class="form-label">Typ pokoju</label>
+                    <select class="form-control" id="RoomType" name="RoomType" required>
+                        <option value="Single" selected="@(Model.RoomType == "Single")">Single</option>
+                        <option value="Double" selected="@(Model.RoomType == "Double")">Double</option>
+                        <option value="Suite" selected="@(Model.RoomType == "Suite")">Suite</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="PricePerNight" class="form-label">Cena za noc (PLN)</label>
+                    <input type="number" class="form-control" id="PricePerNight" name="PricePerNight" value="@Model.PricePerNight" step="0.01" min="0.01" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="MaxGuests" class="form-label">Max liczba gości</label>
+                    <input type="number" class="form-control" id="MaxGuests" name="MaxGuests" value="@Model.MaxGuests" min="1" max="10" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Description" class="form-label">Opis pokoju</label>
+                    <textarea class="form-control" id="Description" name="Description" rows="4">@Model.Description</textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Status" class="form-label">Status</label>
+                    <select class="form-control" id="Status" name="Status" required>
+                        <option value="Available" selected="@(Model.Status == "Available")">Dostępny</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                    <a href="@Url.Action("Index", "Hotels")" class="btn btn-secondary">Anuluj</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
