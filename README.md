@@ -9,6 +9,7 @@ Aplikacja internetowa typu MVC (Model-View-Controller) służąca do rezerwacji 
 - IDE: Visual Studio 2022 
 
 # 3. Instalacja i Konfiguracja
+**0. Przez występujące konflikty migracji, zalecane jest uruchomienie projektu z archiwum pliku "bckp_2201.zip". **
 1. Pobranie: Skopiuj kod źródłowy na swój komputer.
 2. Otwarcie: Otwórz plik "RezerwacjaHoteli.csproj" w Visual Studio.
 3. Baza Danych:
